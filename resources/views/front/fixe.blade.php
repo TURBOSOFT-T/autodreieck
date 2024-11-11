@@ -11,7 +11,7 @@ $produit = DB::table('produits')->get();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Ben Mahmoud Martket</title>
+    <title>Autodreieck</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -108,12 +108,12 @@ $produit = DB::table('produits')->get();
                                                         English
                                                     </button>
                                                 </li>
-                                                <li>
+                                              {{--   <li>
                                                     <button type="submit" name="locale" value="ar" class="dropdown-item">
                                                         <img src="https://img.icons8.com/color/20/saudi-arabia-circular.png" alt="ar">
                                                         العربية
                                                     </button>
-                                                </li>
+                                                </li> --}}
                                             </ul>
                                         </form>
                                         
@@ -538,8 +538,8 @@ $produit = DB::table('produits')->get();
                     <div class="col-xl-4 col-lg-12">
                         <div class="copyright-left d-flex flex-wrap justify-content-center">
                             <ul class="quick-link">
-                                <li>©{{ date('Y') }} Ben Mahmoud Market | Design By<a href="https://www.e-build.tn" style="color: #c71f17;">
-                                        <b> E-build </b>
+                                <li>©{{ date('Y') }} Autodreieck | Design By<a href="https://turbosoft-techno.com" style="color: #c71f17;">
+                                        <b> TURBOSOFT </b>
                                     </a>.</li>
                             </ul>
                         </div>

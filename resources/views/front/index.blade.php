@@ -516,7 +516,7 @@
                             </style>
 
                             <div class="content">
-                                <h3 class="title" style="text-align: justify">{{-- {{ $config->satisfaction ?? '' }}+ --}}
+                                <h3 class="title" style="text-align: justify">
                                     {{ \App\Helpers\TranslationHelper::TranslateText($config->titre_satisfaction ?? ' ') }}
                                 </h3>
 
@@ -533,7 +533,7 @@
                                 <img src="{{ Storage::url($config->icone_annee ?? ' ')  }}" height="100" width="100" alt="Shape">
                             </div>
                             <div class="content">
-                                <h3 class="title" style="text-align: justify">{{-- {{ $config->annee ?? ' ' }}  --}}{{ \App\Helpers\TranslationHelper::TranslateText($config->titre_annee ?? '') }}.</h3>
+                                <h3 class="title" style="text-align: justify">{{ \App\Helpers\TranslationHelper::TranslateText($config->titre_annee ?? '') }}.</h3>
                                 <p style="text-align: justify">
                                     {!! \App\Helpers\TranslationHelper::TranslateText($config->des_annee ?? ' ') !!}
                                 </p>
@@ -546,7 +546,7 @@
                                 <img src="{{ Storage::url($config->icone_prix ?? ' ') }}" height="100" width="100" alt="Shape">
                             </div>
                             <div class="content">
-                                <h3 class="title" style="text-align: justify">{{-- {{ $config->prix ?? ' ' }} --}} {{ \App\Helpers\TranslationHelper::TranslateText($config->titre_prix ?? ' ') }}.</h3>
+                                <h3 class="title" style="text-align: justify"> {{ \App\Helpers\TranslationHelper::TranslateText($config->titre_prix ?? ' ') }}.</h3>
                                 <p style="text-align: justify">
                                     {!! \App\Helpers\TranslationHelper::TranslateText($config->des_prix ?? '') !!}.
                                 </p>
