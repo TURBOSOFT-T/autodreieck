@@ -303,7 +303,7 @@
                                                         <div class="col-sm-6 col-6">
 
                                                             <b class="text-success" style="color: #4169E1">
-                                                                {{ $produit->getPrice() }} DT
+                                                                {{ $produit->getPrice() }} <x-devise></x-devise> 
                                                             </b>
                                                         </div>
 
@@ -312,7 +312,7 @@
 
 
                                                                 <span style="font-size: 1.7rem; color: #dc3545; font-weight: bold;">
-                                                                    {{ $produit->prix }} DT
+                                                                    {{ $produit->prix }} <x-devise></x-devise> 
                                                                 </span>
 
 
@@ -323,7 +323,7 @@
 
 
                                                         <span class="price current-price" style="font-size: 1.7rem;">
-                                                            {{ $produit->getPrice() }} DT
+                                                            {{ $produit->getPrice() }} <x-devise></x-devise> 
                                                             </b></span>
                                                         @endif
 
@@ -434,15 +434,15 @@
                                             <span class="price-amount">
                                                 @if ($produit->inPromotion())
                                                 <b class="text-success" style="color: #4169E1">
-                                                    {{ $produit->getPrice() }} DT
+                                                    {{ $produit->getPrice() }} <x-devise></x-devise> 
                                                 </b>
 
                                                 <span style="position: relative; font-size: 1.5rem; color: #dc3545; font-weight: bold;">
-                                                    {{ $produit->prix }} DT
+                                                    {{ $produit->prix }} <x-devise></x-devise> 
                                                     <span style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background-color: black;"></span>
                                                 </span>
                                                 @else
-                                                {{ $produit->getPrice() }}DT
+                                                {{ $produit->getPrice() }} <x-devise></x-devise> 
                                                 @endif
                                             </span>
                                             <ul class="product-meta">
@@ -635,7 +635,7 @@
                                             <div class="product-price-variant">
                                                 <span class="price-text"> {!! \App\Helpers\TranslationHelper::TranslateText("Coût") !!}:</span>
                                                 <span class="price current-price"> <b class="text-success" style="color: #4169E1">
-                                                        {{ $produit->getPrice() }} DT
+                                                        {{ $produit->getPrice() }} <x-devise></x-devise> 
                                                     </b></span>
                                             </div>
                                         </div>

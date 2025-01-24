@@ -17,7 +17,7 @@
 
                 </div>
                 <h3 class="item-title"><a href="#"> {{ Str::limit($produit['nom'], 15) }}</a></h3>
-                <div class="item-price"><span class="currency-symbol"></span> {{ $produit['prix'] }} DT</div>
+                <div class="item-price"><span class="currency-symbol"></span> {{ $produit['prix'] }} <x-devise></x-devise> </div>
                 <div class="pro-qty item-quantity">
 
                     <span class="quantity-control minus"></span>

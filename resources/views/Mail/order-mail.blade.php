@@ -106,9 +106,9 @@
                             </div>
                         </td>
                         <td>{{ $item->produit->nom }}</td>
-                        <td>{{ $item->prix_unitaire }} DT</td>
+                        <td>{{ $item->prix_unitaire }} <x-devise></x-devise> </td>
                         <td>{{ $item->quantite }}</td>
-                        <td>{{ $item->prix_unitaire * $item->quantite }} DT</td>
+                        <td>{{ $item->prix_unitaire * $item->quantite }} <x-devise></x-devise> </td>
                     </tr>
                     @php
                           $total += $item->prix_unitaire * $item->quantite - $order->coupon;
@@ -131,15 +131,15 @@
                         <b> {{ \App\Helpers\TranslationHelper::TranslateText('Couponde réduction') }} </b>
                     </td>
                     
-                    <td> {{ $order->coupon ?? 0 }} DT </td>
+                    <td> {{ $order->coupon ?? 0 }} <x-devise></x-devise>  </td>
                     <td>1</td>
-                    <td> -{{ $order->coupon ?? 0 }} DT </td>
+                    <td> -{{ $order->coupon ?? 0 }} <x-devise></x-devise>  </td>
                 </tr>
                     
                 @endif
                 <tr class="total">
                     <td colspan="4"><strong>Total</strong></td>
-                    <td><strong>{{ $total }} DT</strong></td>
+                    <td><strong>{{ $total }} <x-devise></x-devise> </strong></td>
                 </tr>
             </tbody>
         </table>
