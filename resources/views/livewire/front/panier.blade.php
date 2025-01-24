@@ -159,7 +159,7 @@ $configs = DB::table('configs')->first();
                                     <tbody>
                                         <tr class="order-subtotal">
                                             <td>Subtotal</td>
-                                            <td>{{ $total }} DT</td>
+                                            <td>{{ $total }} <x-devise></x-devise> </td>
                                         </tr>
                                         <tr class="order-shipping">
                                             <td> {{ \App\Helpers\TranslationHelper::TranslateText('Frais de livraison') }}</td>
@@ -168,7 +168,7 @@ $configs = DB::table('configs')->first();
                                                 <div class="input-group">
                                                    
                                                     <label for="radio2">{{ $configs->frais ?? 0 }}
-                                                        DT</label>
+                                                        <x-devise></x-devise> </label>
                                                 </div>
                                               
                                             </td>
@@ -176,7 +176,7 @@ $configs = DB::table('configs')->first();
                                       
                                         <tr class="order-total">
                                             <td>Total</td>
-                                            <td class="order-total-amount">{{ $total + $configs->frais ?? 0 }} DT</td>
+                                            <td class="order-total-amount">{{ $total + $configs->frais ?? 0 }} <x-devise></x-devise> </td>
                                         </tr>
                                     </tbody>
                                 </table>

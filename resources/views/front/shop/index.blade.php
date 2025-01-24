@@ -217,7 +217,7 @@
 
                                                                                 <b class="text-success"
                                                                                     style="color: #4169E1">
-                                                                                    {{ $produit->getPrice() }} DT
+                                                                                    {{ $produit->getPrice() }} <x-devise></x-devise> 
                                                                                 </b>
                                                                             </div>
 
@@ -228,7 +228,7 @@
                                                                         
                                                                                 <span class="price old-price"
                                                                                     style="position: relative; font-size: 1.5rem; color: #dc3545; font-weight: bold;">
-                                                                                    {{ $produit->prix }} DT
+                                                                                    {{ $produit->prix }} <x-devise></x-devise> 
                                                                                     <span
                                                                                         style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background-color: black;"></span>
                                                                                 </span>
@@ -236,7 +236,7 @@
 
                                                                             </div>
                                                                         @else
-                                                                            {{ $produit->getPrice() }}DT
+                                                                            {{ $produit->getPrice() }}<x-devise></x-devise> 
                                                                     @endif
 
 
@@ -396,12 +396,12 @@
 
                                                                 <span
                                                                     style="position: relative; font-size: 1.2rem; color: #dc3545; font-weight: bold;">
-                                                                    {{ $produit->prix }} DT
+                                                                    {{ $produit->prix }} <x-devise></x-devise> 
                                                                     <span
                                                                         style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background-color: black;"></span>
                                                                 </span>
                                                             @else
-                                                                {{ $produit->getPrice() }}DT
+                                                                {{ $produit->getPrice() }}<x-devise></x-devise> 
                                                             @endif
                                                         </span>
                                                         <ul class="product-meta">
