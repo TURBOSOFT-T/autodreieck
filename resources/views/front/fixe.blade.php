@@ -796,9 +796,7 @@ $produit = DB::table('produits')->get();
             <div class="cart-body">
                 <ul class="cart-item-list" id="list_content_panier">
 
-                    {{-- <div class="cart-item row" id="list_content_panier">
-
-                    </div> --}}
+               
 
 
                 </ul>
