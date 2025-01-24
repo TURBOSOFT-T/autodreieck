@@ -804,7 +804,7 @@ $produit = DB::table('produits')->get();
             <div class="cart-footer">
                 <h3 class="cart-subtotal">
                     <span class="subtotal-title">Subtotal:</span>
-                    <span class="subtotal-amount" id="montant_total_panier">00</span> <x-devise></x-devise> 
+                    <span class="subtotal-amount" id="montant_total_panier">00</span> 
                 </h3>
                 <div class="group-btn">
                     <a href="{{ route('cart') }}" class="axil-btn btn-bg-primary2 viewcart-btn">
