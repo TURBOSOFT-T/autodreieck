@@ -169,20 +169,12 @@
                     </h2>
                 </div>
                 <div class="categrie-product-activation slick-layout-wrapper--15 axil-slick-arrow  arrow-top-slide">
-<style>
-    .category-product img {
-    width: 200px; /* Largeur fixe */
-    height: 200px; /* Hauteur fixe */
-    object-fit: cover; /* Assure que l'image remplit bien le cadre tout en respectant son ratio */
-    border-radius: 8px; /* Coins arrondis */
-}
 
-</style>
                     @foreach ($categories as $category)
                     <div class="slick-single-layout">
                         <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
                             <a href="/category/{{ $category->id }}" class="{{ isset($current_category) && $current_category->id === $category->id ? 'selected' : '' }}">
-                                <img  src="{{ Storage::url($category->photo) }}" width="200" border-radius="8px" height="200" class="rounded shadow" alt="product categorie">
+                                <img  src="{{ Storage::url($category->photo) }}" width="200"   object-fit= "cover" border-radius="8px" height="200" class="rounded shadow" alt="product categorie">
                               
                                 <h6 class="cat-title">
                                     {{ \App\Helpers\TranslationHelper::TranslateText($category->nom ?? '') }}
