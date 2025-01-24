@@ -90,7 +90,7 @@ function get_panier() {
             $("#count-panier-span").text(data.total);
         /*    $("#list_content_panier").html(data.list);   */
          $("#list_content_panier").html(data.html);  
-            $("#montant_total_panier").html(data.montant_total + " DT");
+            $("#montant_total_panier").html(data.montant_total + " €");
         } else {
             console.log("error get panier");
         }
