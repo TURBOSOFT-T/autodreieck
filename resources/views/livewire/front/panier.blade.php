@@ -49,7 +49,7 @@ $configs = DB::table('configs')->first();
                                     </div>
                                 </td>
                                 <td class="product-price" data-title="Price"><span class="currency-symbol"></span>   <p class="price">
-                                    {{ $details['prix'] }} DT
+                                    {{ $details['prix'] }} <x-devise></x-devise> 
                                 </p></td>
                                 <td class="product-quantity" data-title="Qty">
                                     <div class="pro-qty">
@@ -63,7 +63,7 @@ $configs = DB::table('configs')->first();
                                     
                                 </td>
                                 <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol"></span> {{ $details['prix'] * $details['quantite'] }}
-                                    DT</td>
+                                    <x-devise></x-devise> </td>
                             </tr>
                             @empty
                             <tr>
