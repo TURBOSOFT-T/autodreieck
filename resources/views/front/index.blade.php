@@ -626,8 +626,8 @@
 
                                             </div>
                                             <h5 class="title"><a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
-                                                    {{ \App\Helpers\TranslationHelper::TranslateText( Str::limit($produit->description, 20)) }}
-
+                                                  {{--   {{ \App\Helpers\TranslationHelper::TranslateText( Str::limit($produit->description, 20)) }}
+ --}}
                                                 </a></h5>
                                             <div class="product-rating">
 
