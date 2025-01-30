@@ -56,7 +56,7 @@ $produit = DB::table('produits')->get();
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="header-top-text">
                             <p><i class="fas fa-star"></i> 
-                                {{ \App\Helpers\TranslationHelper::TranslateText('Livraison gratuite pour les commandes de plus de 1000 DT') }}
+                                {{ \App\Helpers\TranslationHelper::TranslateText('Livraison gratuite pour les commandes de plus de 10000 €') }}
                             </p>
                         </div>
                     </div>
@@ -754,16 +754,16 @@ $produit = DB::table('produits')->get();
                             <div class="product-price-variant">
                                 @if ($produit->inPromotion())
                                 <span class="price current-price"><b class="text-success" style="color: #4169E1">
-                                        {{ $produit->getPrice() }} DT
+                                        {{ $produit->getPrice() }} <x-devise></x-devise> 
                                     </b></span>
                                 <span class="price old-price">
                                     <span class="price old-price" style="position: relative; font-size: 1.2rem; color: #dc3545; font-weight: bold;">
-                                        {{ $produit->prix }} DT
+                                        {{ $produit->prix }} <x-devise></x-devise> 
                                         <span style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background-color: black;"></span>
                                     </span>
                                 </span>
                                 @else
-                                {{ $produit->getPrice() }}DT
+                                {{ $produit->getPrice() }}<x-devise></x-devise> 
                                 @endif
 
                             </div>
@@ -796,9 +796,7 @@ $produit = DB::table('produits')->get();
             <div class="cart-body">
                 <ul class="cart-item-list" id="list_content_panier">
 
-                    {{-- <div class="cart-item row" id="list_content_panier">
-
-                    </div> --}}
+               
 
 
                 </ul>
@@ -806,7 +804,7 @@ $produit = DB::table('produits')->get();
             <div class="cart-footer">
                 <h3 class="cart-subtotal">
                     <span class="subtotal-title">Subtotal:</span>
-                    <span class="subtotal-amount" id="montant_total_panier">00</span>
+                    <span class="subtotal-amount" id="montant_total_panier">00</span> 
                 </h3>
                 <div class="group-btn">
                     <a href="{{ route('cart') }}" class="axil-btn btn-bg-primary2 viewcart-btn">

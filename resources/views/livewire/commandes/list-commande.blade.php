@@ -221,7 +221,7 @@
                             </span>
                         </td>
                         <td>@if($commande->coupon)
-                            {{ $commande->coupon }} DT
+                            {{ $commande->coupon }} <x-devise></x-devise> 
                             @else
                             ---
                         @endif</td>

@@ -98,14 +98,14 @@
                                             @foreach ($paniers as $id => $details)
                                             <tr class="order-product">
                                                 <td>{{ $details['nom'] }} <span class="quantity">x {{ $details['quantite'] }}</span></td>
-                                                <td> {{ $details['total'] }} DT</td>
+                                                <td> {{ $details['total'] }} <x-devise></x-devise> </td>
 
                                             </tr>
                                             @endforeach
                                            
                                             <tr class="order-subtotal">
                                                 <td>Subtotal</td>
-                                                <td>{{ $total }} DT</td>
+                                                <td>{{ $total }} <x-devise></x-devise> </td>
                                             </tr>
                                             
 
@@ -116,12 +116,12 @@
                                                     <tr>
                                                         <td class="tax"> {{ \App\Helpers\TranslationHelper::TranslateText('Frais de livraison') }}</td>
                                                         <td>{{ $configs->frais ?? 0 }}
-                                                            DT</td>
+                                                            <x-devise></x-devise> </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="tax"> {{ \App\Helpers\TranslationHelper::TranslateText('Coupon de réduction') }}</td>
                                                         <td>-{{ session('coupon')['value'] ?? 0 }}
-                                                            DT</td>
+                                                            <x-devise></x-devise> </td>
                                                     </tr>
                                                     </td>
                                                    
@@ -147,7 +147,7 @@
                                             </tr>
                                             <tr class="order-total">
                                                 <td>Total</td>
-                                                <td class="order-total-amount">{{ $total + $configs->frais ?? 0 }} DT</td>
+                                                <td class="order-total-amount">{{ $total + $configs->frais ?? 0 }} <x-devise></x-devise> </td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -9,17 +9,17 @@
     <head>
     @section('header')
         <meta name="description" content="{{ $produit->description ?? ' ' }}">
-        <meta name="author" content="konica.store">
+        <meta name="author" content="autodreieck-gmbh.com">
         <meta property="og:title" content="{{ $produit->nom }}">
         <meta property="og:description" content="{{ $produit->description ?? '' }}">
         <meta property="og:brand" content="{{ $produit->marques->nom ?? '' }}">
         <meta property="og:image" content="{{ $produit->photo }}">
         <meta property="og:type" content="product">
-        <meta property="og:price:amount" content="{{ $produit->prix }} DT">
+        <meta property="og:price:amount" content="{{ $produit->prix }} €">
 
         <meta property="og:availability" content="{{ $produit->statut }}">
 
-        <meta property="product:price:amount" content="{{ $produit->prix }} DT">
+        <meta property="product:price:amount" content="{{ $produit->prix }} €">
 
         <meta property="product:availability" content="{{ $produit->statut }}">
         <meta name="robots" content="index, follow">
@@ -113,7 +113,7 @@
                                                 <div class="col-sm-6 col-6">
 
                                                     <b class="text-success" style="color: #4169E1">
-                                                        {{ $produit->getPrice() }} DT
+                                                        {{ $produit->getPrice() }}  <x-devise></x-devise> 
                                                     </b>
                                                 </div>
 
@@ -122,7 +122,7 @@
 
                                                     <span
                                                         style="position: relative; font-size: 1.7rem; color: #dc3545; font-weight: bold;">
-                                                        {{ $produit->prix }} DT
+                                                        {{ $produit->prix }} <x-devise></x-devise> 
                                                         <span
                                                             style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background-color: black;"></span>
                                                     </span>
@@ -133,7 +133,7 @@
                                             
                                             <span class="price current-price"> 
                                                
-                                                {{ $produit->getPrice() }} DT
+                                                {{ $produit->getPrice() }} <x-devise></x-devise> 
                                             </b></span>
                                                
                                         @endif
@@ -371,7 +371,7 @@
                                                             <div class="col-sm-6 col-6">
 
                                                                 <b class="text-success" style="color: #4169E1">
-                                                                    {{ $produit->getPrice() }} DT
+                                                                    {{ $produit->getPrice() }} <x-devise></x-devise> 
                                                                 </b>
                                                             </div>
 
@@ -384,7 +384,7 @@
                                                     </span> --}}
                                                                 <span class="price old-price"
                                                                     style="position: relative; font-size: 1.2rem; color: #dc3545; font-weight: bold;">
-                                                                    {{ $produit->prix }} DT
+                                                                    {{ $produit->prix }} <x-devise></x-devise> 
                                                                     <span
                                                                         style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background-color: black;"></span>
                                                                 </span>
@@ -392,7 +392,7 @@
 
                                                             </div>
                                                         @else
-                                                            {{ $produit->getPrice() }}DT
+                                                            {{ $produit->getPrice() }}<x-devise></x-devise> 
                                                     @endif
 
 

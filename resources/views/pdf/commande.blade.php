@@ -110,8 +110,8 @@
                             ( {{ $item->type }} )
                         </td>
                         <td>{{ $item->quantite }}</td>
-                        <td>{{ $item->prix_unitaire }} DT</td>
-                        <td>{{ $item->prix_unitaire * $item->quantite }} DT </td>
+                        <td>{{ $item->prix_unitaire }} <x-devise></x-devise> </td>
+                        <td>{{ $item->prix_unitaire * $item->quantite }} <x-devise></x-devise>  </td>
                     </tr>
                     @php
                         $total += $item->prix_unitaire * $item->quantite - $commande->coupon;
@@ -122,8 +122,8 @@
                         <b> {{ \App\Helpers\TranslationHelper::TranslateText('Frais de livraison') }} </b>
                     </td>
                     <td>1</td>
-                    <td> {{ $commande->frais ?? 0 }} DT </td>
-                    <td> {{ $commande->frais ?? 0 }} DT </td>
+                    <td> {{ $commande->frais ?? 0 }} <x-devise></x-devise>  </td>
+                    <td> {{ $commande->frais ?? 0 }} <x-devise></x-devise>  </td>
                 </tr>
                 @if($commande->coupon ?? 0)
                 <tr>
@@ -131,8 +131,8 @@
                         <b> {{ \App\Helpers\TranslationHelper::TranslateText('Coupon de réduction') }} </b>
                     </td>
                     <td>1</td>
-                    <td> {{ $commande->coupon ?? 0 }} DT </td>
-                    <td> -{{ $commande->coupon ?? 0 }} DT </td>
+                    <td> {{ $commande->coupon ?? 0 }} <x-devise></x-devise> </td>
+                    <td> -{{ $commande->coupon ?? 0 }} <x-devise></x-devise> </td>
                 </tr>
                     
                 @endif
@@ -141,7 +141,7 @@
                         <b> {{ \App\Helpers\TranslationHelper::TranslateText('Total de la commande') }}:</b>
                     </td>
                     <td>
-                        {{ $total }}  DT
+                        {{ $total }}  <x-devise></x-devise> 
                     </td>
                 </tr>
             </tbody>
