@@ -420,7 +420,7 @@
                                 <div class="card-body">
                                     <div class="card-title">
                                         <h5 class="mb-0">
-                                            Top des gouvernorat avec le plus de commande.
+                                            Top des villes avec le plus de commande.
                                         </h5>
                                     </div>
                                     <hr />
@@ -429,7 +429,7 @@
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Gouvernorat</th>
+                                                    <th>Ville</th>
                                                     <th>Commandes</th>
                                                 </tr>
                                             </thead>
