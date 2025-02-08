@@ -168,22 +168,13 @@
                         {{ \App\Helpers\TranslationHelper::TranslateText('Parcourrir par categories') }}
                     </h2>
                 </div>
-                <style>
-                    .fixed-image {
-    width: 200px;
-    height: 200px;
-    object-fit: cover; /* Conserve le ratio sans déformation */
-    border-radius: 8px;
-}
-
-                </style>
                 <div class="categrie-product-activation slick-layout-wrapper--15 axil-slick-arrow  arrow-top-slide">
 
                     @foreach ($categories as $category)
                     <div class="slick-single-layout">
                         <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
                             <a href="/category/{{ $category->id }}" class="{{ isset($current_category) && $current_category->id === $category->id ? 'selected' : '' }}">
-                                <img   src="{{ Storage::url($category->photo) }}"   width="200"   border-radius="8px" height="200" class="rounded shadow fixed-image" alt="product categorie">
+                                <img   src="{{ Storage::url($category->photo) }}"   width="200"   border-radius="8px" height="200" class="rounded shadow" alt="product categorie">
                               
                                 <h6 class="cat-title">
                                     {{ \App\Helpers\TranslationHelper::TranslateText($category->nom ?? '') }}
