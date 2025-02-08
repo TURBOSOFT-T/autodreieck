@@ -489,9 +489,9 @@
 
                             <div class="content">
                                {{--  <p style="text-align: justify"> --}}
-                                    <h1 class="title" style="text-align: justify">
+                                    <h6 class="title" style="text-align: justify">
                                     {!! \App\Helpers\TranslationHelper::TranslateText($config->titre_satisfaction ?? ' ') !!}
-                                    </h1>
+                                    </h6>
                               {{--   </p> --}}
 
                                 <p style="text-align: justify">
