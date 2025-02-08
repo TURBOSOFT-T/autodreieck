@@ -22,14 +22,14 @@
                         <option value="confirmer">Confirmé</option>
                         <option value="non_confirmer">Non confirmé</option>
                     </select>
-                    <select class="form-control" wire:model="country">
+                  {{--   <select class="form-control" wire:model="country">
                         <option value="">Country</option>
                         @foreach ($countries as $gouvernorat)
                             <option value="{{ $gouvernorat }}">
-                                {{ $gouvernorat }}
+                                {{ $gouvernorat->name }}
                             </option>
                         @endforeach
-                    </select>
+                    </select> --}}
                     <select class="form-control" wire:model="statut">
                         <option value="">Etat</option>
                         <option value="créé">Créé</option>
