@@ -489,7 +489,9 @@
 
                             <div class="content">
                                 <p style="text-align: justify">
+                                    <h3 class="title" style="text-align: justify">
                                     {!! \App\Helpers\TranslationHelper::TranslateText($config->titre_satisfaction ?? ' ') !!}
+                                    </h3>
                                 </p>
 
                                 <p style="text-align: justify">
