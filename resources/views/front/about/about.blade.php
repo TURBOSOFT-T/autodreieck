@@ -82,7 +82,7 @@
 
 
 <!-- Start About Area  -->
-{{-- <div class="axil-about-area about-style-2">
+ <div class="axil-about-area about-style-2">
     <div class="container">
 
         <div class="row align-items-center">
@@ -121,7 +121,7 @@
         </div>
        
     </div>
-</div> --}}
+</div> 
 
 
 <style>
