@@ -538,8 +538,9 @@
         <!-- Start Expolre Product Area  -->
         <div class="axil-product-area bg-color-white axil-section-gapcommon">
             <div class="container">
-                <div class="section-title-border slider-section-title">
-                    <h2 class="title"> {{ \App\Helpers\TranslationHelper::TranslateText('Produits en promotion') }}💥</h2>
+                <div class="section-title-wrapper section-title-center">
+                       
+                    <h2 class="title">{{ \App\Helpers\TranslationHelper::TranslateText('Produits en promotion') }}💥</h2>
                 </div>
                 <div class="popular-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-angle angle-top-slide">
                     <div class="slick-single-layout">
@@ -551,7 +552,7 @@
                                 <div class="axil-product product-style-eight product-list-style-3">
                                     <div class="thumbnail">
                                         <a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
-                                            <img class="main-img" width="300" height="300"  src="{{ Storage::url($produit->photo) }}" alt="Product Images">
+                                            <img class="main-img" width="200" height="200"  src="{{ Storage::url($produit->photo) }}" alt="Product Images">
 
                                             <style>
                                                 .top-left {
@@ -629,6 +630,7 @@
         </div>
         <!-- End Expolre Product Area  -->
 
+   
         <!-- Start Testimonila Area  -->
         <div class="axil-testimoial-area axil-section-gap bg-vista-white">
             <div class="container">
