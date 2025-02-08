@@ -40,4 +40,169 @@
         text-align: center;
     }
 }
-  
+
+
+.header-brands img {
+
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    margin-top: 50px;
+}
+
+
+.header-brands:hover img {
+    transform: scale(1.5);
+}
+.btn-bg-primary2 {
+    background-color: #5EA13C;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+
+.btn-bg-secondary2 {
+    background-color: #EFB121;
+    /* Couleur de fond, bleu dans cet exemple */
+    color: #ffffff;
+    /* Couleur du texte, blanc dans cet exemple */
+    border: none;
+    padding: 10px 20px;
+    /* Optionnel, ajuste la taille */
+    border-radius: 5px;
+    /* Optionnel, arrondit les coins */
+    text-decoration: none;
+    /* Supprime le soulignement */
+}
+
+
+.testimonial-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.form-control {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: #495057;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+textarea.form-control {
+    border-radius: 15px;
+}
+
+button.btn {
+    padding: 0.5rem 2rem;
+    font-size: 1.125rem;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-primary {
+    background-color: #EFB121;
+    border-color: #EFB121;
+}
+
+button.btn-primary:hover {
+    background-color: #EFB121;
+    border-color: #EFB121;
+}
+
+.alert {
+    max-width: 600px;
+    margin: 1rem auto;
+}
+
+.top-left {
+    position: absolute;
+    top: 8px;
+    right: 18px;
+    color: #EFB121;
+}
+
+.top-right {
+    position: absolute;
+    top: -30px;
+    right: 18px;
+    color: #EFB121;
+}
+
+.image-center {
+    display: flex;
+    justify-content: center;
+}
+  /* Assurez-vous que les images du carrousel sont responsives */
+  .carousel-inner img {
+    width: 80%;
+    height: auto;
+}
+
+/* Ajustez la taille du texte du carrousel pour les petits écrans */
+@media (max-width: 768px) {
+
+    .carousel-caption p,
+    .carousel-caption h1 {
+        font-size: 1rem;
+        /* Ajustez la taille selon vos besoins */
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.875rem;
+        /* Ajustez la taille du bouton selon vos besoins */
+    }
+}
+
+/* Assurez-vous que les contrôles du carrousel sont adaptés pour les petits écrans */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    /* Ajustez la largeur des contrôles */
+    height: 100%;
+}
+.axil-breadcrumb-item1 {
+    font-size: 14px;
+    color: #EFB121;
+
+}
+
+.axil-breadcrumb-item.active {
+    font-weight: bold;
+    color: #EFB121;
+
+}
+
+.axil-breadcrumb-item:not(.active)::after {
+    content: " / ";
+
+    color: #EFB121;
+}
+
+.fixed-image {
+width: 200px;
+height: 100px;
+object-fit: cover; /* Conserve le ratio sans déformation */
+border-radius: 8px;
+}
+.axil-breadcrumb-item1 {
+    font-size: 14px;
+    color: #EFB121; /* Default breadcrumb color */
+}
+
+.axil-breadcrumb-item.active {
+    font-weight: bold;
+    color: #EFB121; /* Distinct color for active item */
+}

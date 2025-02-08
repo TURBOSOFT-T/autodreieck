@@ -38,6 +38,7 @@ $produit = DB::table('produits')->get();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/Script.js"></script>
+    <link rel="stylesheet" href="/style.css">
     @yield('header')
 
 </head>
@@ -152,7 +153,7 @@ $produit = DB::table('produits')->get();
                             <img src="{{ Storage::url($config->logo ?? ' ') }}" alt="Site Logo">
                         </a>
 
-                        <style>
+                    {{--     <style>
                             .header-brands img {
 
                                 object-fit: contain;
@@ -165,7 +166,7 @@ $produit = DB::table('produits')->get();
                                 transform: scale(1.5);
                             }
 
-                        </style>
+                        </style> --}}
                     </div>
                     {{-- <div class=" header-brand nav-brand">
                          <a href="{{ route('home') }}" class="logo logo-dark">
@@ -827,31 +828,7 @@ $produit = DB::table('produits')->get();
         </div>
     </div>
 
-    <style>
-        .btn-bg-primary2 {
-            background-color: #5EA13C;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .btn-bg-secondary2 {
-            background-color: #EFB121;
-            /* Couleur de fond, bleu dans cet exemple */
-            color: #ffffff;
-            /* Couleur du texte, blanc dans cet exemple */
-            border: none;
-            padding: 10px 20px;
-            /* Optionnel, ajuste la taille */
-            border-radius: 5px;
-            /* Optionnel, arrondit les coins */
-            text-decoration: none;
-            /* Supprime le soulignement */
-        }
-
-    </style>
+   
     <!-- JS
 ============================================ -->
     <!-- Modernizer JS -->

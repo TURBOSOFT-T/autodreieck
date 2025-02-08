@@ -8,39 +8,7 @@
     $produit = DB::table('produits')->get();
     @endphp
 
-    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- --}}
-    <style>
-        .axil-breadcrumb-item1 {
-            font-size: 14px;
-            color: #EFB121;
 
-        }
-
-        .axil-breadcrumb-item.active {
-            font-weight: bold;
-            color: #EFB121;
-
-        }
-
-        .axil-breadcrumb-item:not(.active)::after {
-            content: " / ";
-
-            color: #EFB121;
-        }
-
-        .fixed-image {
-    width: 200px;
-    height: 100px;
-    object-fit: cover; /* Conserve le ratio sans déformation */
-    border-radius: 8px;
-}
-
-
-    </style>
     <main class="main-wrapper">
 
         <div class="container-fluid px-0 mb-5">
@@ -91,38 +59,7 @@
                 </button>
             </div>
         </div>
-        <style>
-            /* Assurez-vous que les images du carrousel sont responsives */
-            .carousel-inner img {
-                width: 80%;
-                height: auto;
-            }
-
-            /* Ajustez la taille du texte du carrousel pour les petits écrans */
-            @media (max-width: 768px) {
-
-                .carousel-caption p,
-                .carousel-caption h1 {
-                    font-size: 1rem;
-                    /* Ajustez la taille selon vos besoins */
-                }
-
-                .carousel-caption .btn {
-                    font-size: 0.875rem;
-                    /* Ajustez la taille du bouton selon vos besoins */
-                }
-            }
-
-            /* Assurez-vous que les contrôles du carrousel sont adaptés pour les petits écrans */
-            .carousel-control-prev,
-            .carousel-control-next {
-                width: 5%;
-                /* Ajustez la largeur des contrôles */
-                height: 100%;
-            }
-
-        </style>
-
+       
        
 
 
@@ -479,14 +416,7 @@
                             <div class="thumb image-center">
                                 <img src="{{ Storage::url($config->icone_satisfaction ?? '') }}" width="100" height="100" alt="Shape">
                             </div>
-                            <style>
-                                .image-center {
-                                    display: flex;
-                                    justify-content: center;
-                                }
-
-                            </style>
-
+                            
                             <div class="content">
                                {{--  <p style="text-align: justify"> --}}
                                     <h6 class="title" style="text-align: justify">
@@ -554,22 +484,7 @@
                                         <a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
                                             <img class="main-img" width="200" height="200"  src="{{ Storage::url($produit->photo) }}" alt="Product Images">
 
-                                            <style>
-                                                .top-left {
-                                                    position: absolute;
-                                                    top: 8px;
-                                                    right: 18px;
-                                                    color: #EFB121;
-                                                }
-
-                                                .top-right {
-                                                    position: absolute;
-                                                    top: -30px;
-                                                    right: 18px;
-                                                    color: #EFB121;
-                                                }
-
-                                            </style>
+                                           
 
                                             <div class="top-left" style="background-color:#EFB121;color: white;">
                                                 <span>
@@ -741,54 +656,7 @@
                         </div>
                         @endif
                         <style>
-                            .testimonial-form {
-                                max-width: 600px;
-                                margin: 0 auto;
-                                background-color: #f8f9fa;
-                            }
-
-                            .form-group {
-                                margin-bottom: 1.5rem;
-                            }
-
-                            .form-label {
-                                font-weight: 600;
-                                font-size: 1rem;
-                            }
-
-                            .form-control {
-                                padding: 0.75rem 1rem;
-                                font-size: 1rem;
-                                color: #495057;
-                                background-color: #fff;
-                                border-radius: 25px;
-                            }
-
-                            textarea.form-control {
-                                border-radius: 15px;
-                            }
-
-                            button.btn {
-                                padding: 0.5rem 2rem;
-                                font-size: 1.125rem;
-                                transition: background-color 0.3s ease;
-                            }
-
-                            button.btn-primary {
-                                background-color: #EFB121;
-                                border-color: #EFB121;
-                            }
-
-                            button.btn-primary:hover {
-                                background-color: #EFB121;
-                                border-color: #EFB121;
-                            }
-
-                            .alert {
-                                max-width: 600px;
-                                margin: 1rem auto;
-                            }
-
+                           
                         </style>
 
                     </div>
@@ -834,18 +702,6 @@
         </script>
 
 
-
-        <style>
-            .btn-bg-primary2 {
-                background-color: #5EA13C;
-                color: #ffffff;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                text-decoration: none;
-            }
-
-        </style>
 
     </main>
 
