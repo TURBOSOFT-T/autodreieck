@@ -93,7 +93,7 @@ $produit = DB::table('produits')->get();
                                         <form action="{{ route('locale.change') }}" method="POST">
                                             @csrf
                                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {{ app()->getLocale() == 'fr' ? 'Français' : (app()->getLocale() == 'en' ? 'English' : 'العربية') }}
+                                                {{ app()->getLocale() == 'fr' ? 'Français' : (app()->getLocale() == 'en' ? 'English' : (app()->getLocale() == 'de' ? 'Deutsch' : (app()->getLocale() == 'ru' ? 'Русский' : 'العربية'))) }}
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li>
@@ -107,13 +107,22 @@ $produit = DB::table('produits')->get();
                                                         <img src="https://img.icons8.com/color/20/great-britain-circular.png" alt="en">
                                                         English
                                                     </button>
+
                                                 </li>
-                                              {{--   <li>
-                                                    <button type="submit" name="locale" value="ar" class="dropdown-item">
-                                                        <img src="https://img.icons8.com/color/20/saudi-arabia-circular.png" alt="ar">
-                                                        العربية
+                                                <li>
+                                                    <button type="submit" name="locale" value="de" class="dropdown-item">
+                                                        <img src="https://img.icons8.com/color/20/germany-circular.png" alt="de">
+                                                        Deutsch
+                                                    </button>
+                                                </li>
+
+                                               {{--  <li>
+                                                    <button type="submit" name="locale" value="ru" class="dropdown-item">
+                                                        <img src="https://img.icons8.com/color/20/russia-circular.png" alt="ru">
+                                                        Русский
                                                     </button>
                                                 </li> --}}
+                                            
                                             </ul>
                                         </form>
                                         

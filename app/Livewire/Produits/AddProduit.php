@@ -56,7 +56,7 @@ public $free_shipping;
     {
         $data =  $this->validate([
             'nom' => 'required|string',
-            'description' => 'required|string|max:5000060',
+            'description' => 'required|string|max:50000060',
          //   'tags' => 'nullable|string|max:260',
             'reference' => 'required|string|unique:produits,reference',
             'prix' => 'required|numeric|gt:prix_achat',
@@ -125,7 +125,7 @@ public $free_shipping;
             $this->validate([
                 'nom' => 'required|string',
                 'prix' => 'required|numeric|gt:prix_achat',
-               
+                'description' => 'nullable|string|Max:50000000',
                 'prix_achat' => 'required|numeric',
                 'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp',
                 'photos.*' => 'nullable|image|mimes:jpg,jpeg,png,webp',

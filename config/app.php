@@ -92,6 +92,8 @@ return [
     'locales' => [
         'fr',
         'en',
+        'ru',
+        'de',
      
        'ar',
     ],

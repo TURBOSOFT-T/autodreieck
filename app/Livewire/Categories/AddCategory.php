@@ -54,7 +54,7 @@ class AddCategory extends Component
     {
         $this->validate([
             'nom' => 'required|string',
-            'description' => 'nullable|string|Max:5000',
+            'description' => 'nullable|string|Max:5000000',
             'photo' => 'required|image|mimes:jpg,jpeg,png,webp',
         ]);
         ;[
@@ -88,7 +88,8 @@ class AddCategory extends Component
         if($this->category){
             $this->validate([
                 'nom' => 'required|string',
-                'description' => 'required|string',
+             //   'description' => 'required|string',
+             'description' => 'nullable|string|Max:5000000',
               
               
                 'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp',
