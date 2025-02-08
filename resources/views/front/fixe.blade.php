@@ -523,7 +523,7 @@ $produit = DB::table('produits')->get();
                                         <ul class="support-list-item">
                                             <li><a href="mailto:example@domain.com"><i class="fal fa-envelope-open"></i>
                                                     {{ $config->email ?? ' ' }}</a></li>
-                                            <li><a href="tel:(+01)850-315-5862"><i class="fal fa-phone-alt"></i>{{ $config->telephone ?? ' ' }}</a>
+                                            <li><a href="tel:{{ preg_replace('/\D/', '', $config->telephone) }}"><i class="fal fa-phone-alt"></i>{{ $config->telephone ?? ' ' }}</a>
                                             </li>
                                             <li><i class="fal fa-map-marker-alt"></i>{{ $config->addresse ?? ' ' }}
                                             </li>
