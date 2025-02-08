@@ -87,7 +87,7 @@ class commandes extends Model
             $totalTTC += $contenu->prix_unitaire * $contenu->quantite;
         }
 
-        $totalHT = $totalTTC / (1 + ($config->tax) / 100);
+        $totalHT = $totalTTC ;
         return  $totalHT ?? 0;
     }
 
@@ -114,7 +114,7 @@ class commandes extends Model
         foreach ($this->contenus as $contenu) {
             $totalTTC += $contenu->prix_unitaire * $contenu->quantite;
 
-            $prixHT = $contenu->prix_unitaire / (1 + ($config->tax) / 100);
+            $prixHT = $contenu->prix_unitaire;
         }
 
         return $prixHT;
