@@ -3,7 +3,7 @@
     @include('components.alert')
 
     @if ($category)
-        <form wire:submit="update_category">
+        <form wire:submit="update_category({{ $category->id }})">
         @else
             <form wire:submit="create">
     @endif

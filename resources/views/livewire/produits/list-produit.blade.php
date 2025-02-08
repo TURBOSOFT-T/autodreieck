@@ -57,7 +57,7 @@
                                 wire:click="add_top({{ $produit->id }})">
                         </td>
                         <td>
-                            <img src="{{ Storage::url($produit->photo) }}" width="40 " height="40 "
+                            <img  src="{{ asset('Image/' . $produit->photo) }}"{{-- src="{{ Storage::url($produit->photo) }}" --}} width="40 " height="40 "
                                 class="rounded shadow" alt="">
                         </td>
                         <td>

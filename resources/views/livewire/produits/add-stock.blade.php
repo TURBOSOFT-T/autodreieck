@@ -17,7 +17,7 @@
             @forelse ($produits as $item)
                 <tr>
                     <td>
-                        <img src="{{ Storage::url($item->photo) }}" width="30" height="30" class="rounded "
+                        <img src="{{ asset('Image/' . $produit->photo) }}" {{-- src="{{ Storage::url($item->photo) }}" --}} width="30" height="30" class="rounded "
                             alt="">
                     </td>
                     <td>

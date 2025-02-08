@@ -47,7 +47,7 @@
                 @forelse ($categories as $cat)
                     <tr>
                         <td>
-                            <img src="{{ Storage::url($cat->photo) }}" width="40 " height="40 "
+                            <img src="{{ asset('Image/' . $cat->photo) }}"{{-- src="{{ Storage::url($cat->photo) }}" --}} width="40 " height="40 "
                                 class="rounded shadow" alt="">
                                
                         </td>

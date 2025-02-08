@@ -18,6 +18,7 @@ class TranslationHelper
 
         return cache()->remember($cacheKey, now()->addDays(7), function () use ($text, $locale) {
             $tr = new GoogleTranslate($locale);
+            $tr->setOptions(['verify' => false]); // Désactiver la vérification SSL
             return $tr->translate($text);
         });
     }

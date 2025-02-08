@@ -6,6 +6,8 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AddCategory extends Component
 {
@@ -63,29 +65,35 @@ class AddCategory extends Component
       
           ];
 
-       
-
-
         $category = new Category();
         $category->nom = $this->nom;
         $category->description = $this->description;
         
-        $category->photo = $this->photo->store('categories', 'public');
-      /*   if ($this->photos) {
-            $photosPaths = [];
-            foreach ($this->photos as $photo) {
-                $photosPaths[] = $photo->store('categories', 'public');
+      
+          if ($this->photo) {
+            $filename = time() . '.' . $this->photo->getClientOriginalExtension();
+            
+            // Stockage temporaire
+            $path = $this->photo->storeAs('Image', $filename, 'public'); 
+            
+            // Déplacement manuel vers public/Image/
+            $sourcePath = storage_path("app/public/$path"); 
+            $destinationPath = public_path("Image/$filename");
+        
+            if (file_exists($sourcePath)) {
+                rename($sourcePath, $destinationPath); // Déplacer l'image
             }
-            $category->photos = json_encode($photosPaths);
-        } */
+        
+            $category->photo = $filename;
+        }
+        
+        
+  
         $category->save();
 
-        //reset input
+        
         $this->resetInput();
-       // $this->resetInputFields();
-
-
-        //flash message
+     
         session()->flash('success', 'category ajoutée avec succès');
     }
 
@@ -108,22 +116,30 @@ class AddCategory extends Component
             $this->category->nom = $this->nom;
             $this->category->description = $this->description;
             
-
-            if($this->photo){
-                //delete old photo
-                if ($this->category->photo) {
-                    Storage::disk('public')->delete($this->category->photo);
+            if ($this->photo) {
+                // Vérifier si une ancienne image existe
+                if ($this->category->photo && file_exists(public_path('Image/' . $this->category->photo))) {
+                    unlink(public_path('Image/' . $this->category->photo)); // Supprime l'ancienne image
                 }
-                $this->category->photo = $this->photo->store('categories', 'public');
+        
+                // Enregistrer la nouvelle image
+                $filename = time(). '.'. $this->photo->getClientOriginalExtension();
+                
+                // Stockage temporaire
+                $path = $this->photo->storeAs('Image', $filename, 'public');
+
+                // Déplacement manuel vers public/Image/    
+                $sourcePath = storage_path("app/public/$path");
+                $destinationPath = public_path("Image/$filename");
+                copy($sourcePath, $destinationPath);
+                $this->category->photo = $filename;
+
+                
+                   
+            
             }
 
-        /*     if ($this->photos) {
-                $photosPaths = [];
-                foreach ($this->photos as $photo) {
-                    $photosPaths[] = $photo->store('categorys', 'public');
-                }
-                $this->category->photos = json_encode($photosPaths);
-            } */
+        
             $this->category->save();
     
   
@@ -135,13 +151,6 @@ class AddCategory extends Component
 
         }
     }
-
-
-
-
-
-
-
 
 
 

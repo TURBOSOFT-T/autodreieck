@@ -174,7 +174,7 @@
                     <div class="slick-single-layout">
                         <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
                             <a href="/category/{{ $category->id }}" class="{{ isset($current_category) && $current_category->id === $category->id ? 'selected' : '' }}">
-                                <img  src="{{ Storage::url($category->photo) }}" width="200"   border-radius="8px" height="200" class="rounded shadow" alt="product categorie">
+                                <img  src="{{ asset('Image/' . $category->photo) }}" {{-- src="{{ url('public/Image/' . $category->photo) }}" --}}   width="200"   border-radius="8px" height="200" class="rounded shadow" alt="product categorie">
                               
                                 <h6 class="cat-title">
                                     {{ \App\Helpers\TranslationHelper::TranslateText($category->nom ?? '') }}
@@ -210,8 +210,8 @@
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
                                         <a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
-                                            <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800" loading="lazy" class="main-img" border-radius="8px" src="{{ Storage::url($produit->photo) }}" alt="Product Images">
-                                            <img class="hover-img" border-radius="8px" src="{{ Storage::url($produit->photo) }}" alt="Product Images">
+                                            <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800" loading="lazy" class="main-img" border-radius="8px" src="{{ asset('Image/' . $produit->photo) }}" {{-- src="{{ Storage::url($produit->photo) }}" --}} alt="Product Images">
+                                            <img class="hover-img" border-radius="8px" src="{{ asset('Image/' . $produit->photo) }}" {{-- src="{{ Storage::url($produit->photo) }}" --}} alt="Product Images">
                                         </a>
 
                                         <style>
@@ -374,7 +374,7 @@
 
                                             <div class="shop-details-tab-img product-img--main" id="zoomContaine" data-scale="1.4" style="overflow: hidden; position: relative;">
 
-                                                <img id="mainImage" src="{{ Storage::url($produit->photo) }}" height="600" width="600" alt="Product image" style="transition: transform 0.3s ease;" />
+                                                <img id="mainImage" src="{{ asset('Image/' . $produit->photo) }}" {{-- src="{{ Storage::url($produit->photo) }}" --}} height="600" width="600" alt="Product image" style="transition: transform 0.3s ease;" />
                                             </div>
 
 
@@ -577,7 +577,7 @@
                                 <div class="axil-product product-style-eight product-list-style-3">
                                     <div class="thumbnail">
                                         <a href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
-                                            <img class="main-img" width="300" height="300" src="{{ Storage::url($produit->photo) }}" alt="Product Images">
+                                            <img class="main-img" width="300" height="300" src="{{ asset('Image/' . $produit->photo) }}"{{-- src="{{ Storage::url($produit->photo) }}" --}} alt="Product Images">
 
                                             <style>
                                                 .top-left {

@@ -96,7 +96,25 @@ public $free_shipping;
 
         $produit->prix = $this->prix;
         $produit->prix_achat = $this->prix_achat;
-        $produit->photo = $this->photo->store('produits', 'public');
+        //$produit->photo = $this->photo->store('produits', 'public');
+
+        
+        if ($this->photo) {
+            $filename = time() . '.' . $this->photo->getClientOriginalExtension();
+            
+            // Stockage temporaire
+            $path = $this->photo->storeAs('Image', $filename, 'public'); 
+            
+            // Déplacement manuel vers public/Image/
+            $sourcePath = storage_path("app/public/$path"); 
+            $destinationPath = public_path("Image/$filename");
+        
+            if (file_exists($sourcePath)) {
+                rename($sourcePath, $destinationPath); // Déplacer l'image
+            }
+        
+            $produit->photo = $filename;
+        }
         if ($this->photos) {
             $photosPaths = [];
             foreach ($this->photos as $photo) {
