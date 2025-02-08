@@ -73,9 +73,26 @@ class AddCategory extends Component
             $filename = time() . '.' . $this->photo->getClientOriginalExtension();
     
             // Stocker directement dans public/Image/
-         //   $this->photo->move(public_path('Image'), $filename);
+         //  $this->photo->move('public/Image/', $filename);
+         //  $this->photo->move(public_path('Image'), $filename);
+           $sourcePath = storage_path('app/livewire-tmp/' . $this->photo->getFilename());
+
+           // Chemin de destination dans public/Image/
+           $destinationPath = public_path('Image/' . $filename);
+       
+           // Forcer le déplacement avec rename
+           if (file_exists($sourcePath)) {
+               if (rename($sourcePath, $destinationPath)) {
+                   // Si le déplacement est réussi, enregistrer le nom du fichier dans la base
+                   $category->photo = $filename;
+               } else {
+                   session()->flash('error', 'Impossible de déplacer le fichier.');
+               }
+           } else {
+               session()->flash('error', 'Le fichier source n\'existe pas.');
+           }
       //   $this->photo->storeAs('Image', $filename, 'public');
-            rename(storage_path('app/livewire-tmp/' . $this->photo->getFilename()), public_path('Image/' . $filename));
+          //  rename(storage_path('app/livewire-tmp/' . $this->photo->getFilename()), public_path('Image/' . $filename));
 
           //  
     
