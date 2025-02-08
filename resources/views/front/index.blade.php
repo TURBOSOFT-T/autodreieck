@@ -32,6 +32,14 @@
             color: #EFB121;
         }
 
+        .fixed-image {
+    width: 200px;
+    height: 100px;
+    object-fit: cover; /* Conserve le ratio sans déformation */
+    border-radius: 8px;
+}
+
+
     </style>
     <main class="main-wrapper">
 
@@ -131,7 +139,9 @@
                     </h2>
                 </div>
                 <div class="categrie-product-activation slick-layout-wrapper--15 axil-slick-arrow  arrow-top-slide">
+<style>
 
+</style>
                     @foreach ($categories as $category)
                     <div class="slick-single-layout">
                         <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
