@@ -69,24 +69,36 @@ class AddCategory extends Component
         $category->nom = $this->nom;
         $category->description = $this->description;
         
-      
-          if ($this->photo) {
+        if ($this->photo) {
+            $filename = time() . '.' . $this->photo->getClientOriginalExtension();
+    
+            // Stocker directement dans public/Image/
+         //   $this->photo->move(public_path('Image'), $filename);
+      //   $this->photo->storeAs('Image', $filename, 'public');
+            rename(storage_path('app/livewire-tmp/' . $this->photo->getFilename()), public_path('Image/' . $filename));
+
+          //  
+    
+            // Enregistrer l'image dans la base de données
+            $category->photo = $filename;
+        }
+      /*     if ($this->photo) {
             $filename = time() . '.' . $this->photo->getClientOriginalExtension();
             
-            // Stockage temporaire
+           
             $path = $this->photo->storeAs('Image', $filename, 'public'); 
             
-            // Déplacement manuel vers public/Image/
+           
             $sourcePath = storage_path("app/public/$path"); 
             $destinationPath = public_path("Image/$filename");
         
             if (file_exists($sourcePath)) {
-                rename($sourcePath, $destinationPath); // Déplacer l'image
+                rename($sourcePath, $destinationPath);
             }
         
             $category->photo = $filename;
         }
-        
+         */
         
   
         $category->save();
@@ -151,6 +163,7 @@ class AddCategory extends Component
 
         }
     }
+
 
 
 
