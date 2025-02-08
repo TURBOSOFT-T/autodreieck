@@ -57,6 +57,7 @@ return new class extends Migration
             $table->string('image_about')->nullable();
             $table->string('image_login')->nullable();
             $table->string('image_register')->nullable();
+            $table->decimal("marge", 10,2)->nullable();
             $table->timestamps();
         });
 

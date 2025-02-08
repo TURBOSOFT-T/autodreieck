@@ -99,6 +99,16 @@
                     @enderror
                 </div>
             </div>
+
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="">La marge du benefice</label>
+                    <input type="number" wire:model="marge" step="0.1" class="form-control">
+                    @error('marge')
+                        <span class="text-danger small"> {{ $message }} </span>
+                    @enderror
+                </div>
+            </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="">Email</label>

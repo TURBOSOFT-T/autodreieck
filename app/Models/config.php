@@ -54,6 +54,7 @@ class config extends Model
         'titre_annee',
         'titre_prix',
         'titre_satisfaction',
+        'marge',
         
     ];
 }

@@ -22,7 +22,7 @@ class AdminContact extends Component
    $image_contact2, $image_shop2, $image_about2,
    $image_login, $image_register,
    $image_login2, $image_register2,
-   $titre_annee, $titre_prix, $titre_satisfaction; 
+   $titre_annee, $titre_prix, $titre_satisfaction, $marge; 
 
 
 
@@ -76,6 +76,7 @@ class AdminContact extends Component
 
         $this->titre_apropos2 = $config->titre_apropos2;
         $this->des_apropos2 = $config->des_apropos2;
+        $this->marge=$config->marge;
 
 
 
@@ -96,6 +97,7 @@ class AdminContact extends Component
             'logofooter' =>  'image|nullable|max:20024',//
             'frais' => 'nullable|numeric',
             'satisfaction' => 'nullable|numeric',
+            'marge' => 'nullable|numeric',
             'telephone' => 'nullable|numeric',
             'email' => 'nullable',
             'addresse' => 'nullable|string',
@@ -243,6 +245,7 @@ class AdminContact extends Component
 
         $config->titre_apropos2 = $this->titre_apropos2;
         $config->des_apropos2 = $this->des_apropos2;
+        $config->marge = $this->marge;
 
        
 

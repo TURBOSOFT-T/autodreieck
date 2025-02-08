@@ -49,6 +49,9 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
+        $this->call(CountrySeeder::class);
+        $this->call(StateSeeder::class);
+        $this->call(CitySeeder::class);
 
         foreach ($this->permissions as $permission) {
             Permission::create(['name' => $permission]);
@@ -101,8 +104,8 @@ class DatabaseSeeder extends Seeder
         $cat->frais = '15';
         $cat->description = 'Notre objectif a pour vocation de prendre soin de votre jardin afin quil soit toujours impeccable, avec ses massifs désherbés, ses arbres bien taillés et sa pelouse parfaitement tondue.';
        $cat->telephone= '56399165';
-       $cat->email='agrihub@gmail.com';
-       $cat->addresse='Tunis  Avenue Mohamed Melki 1005 El Omrane';
+       $cat->email='autodreieck-gmbh@gmail.com';
+       $cat->addresse='Berlin  Avenue Mohamed Melki 1005 El Omrane';
 
         $cat->save(); 
 

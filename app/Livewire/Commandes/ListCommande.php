@@ -8,6 +8,7 @@ use App\Models\produits;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Mail\{OrderChangeStatut, ChangeStatut};
+use App\Models\Country;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Mail;
@@ -19,7 +20,7 @@ class ListCommande extends Component
     use TraitsListGouvernorats;
 
     public $selectedCommandes = [];
-    public $date, $statut, $key, $gouvernoratsTunisie, $gouvernorat, $statut2;
+    public $date, $statut, $key, $gouvernoratsTunisie, $gouvernorat, $statut2,$note, $country;
 
 
 
@@ -36,11 +37,14 @@ class ListCommande extends Component
         if (strlen($this->date) > 0) {
             $commandesQuery->whereDate('created_at', $this->date);
         }
-        if (strlen($this->gouvernorat) > 0) {
-            $commandesQuery->where('gouvernorat', $this->gouvernorat);
+        if (strlen($this->country) > 0) {
+            $commandesQuery->where('country', $this->country);
         }
         if (strlen($this->statut) > 0) {
             $commandesQuery->where('statut', $this->statut);
+        }
+        if (strlen($this->note) < 0) {
+            $commandesQuery->where('note', $this->note);
         }
         if (strlen($this->statut2) > 0) {
             if ($this->statut2 == "confirmer") {
@@ -53,25 +57,27 @@ class ListCommande extends Component
             $commandesQuery->where('nom', 'like', '%' . $this->key . '%')
                 ->orWhere('adresse', 'like', '%' . $this->key . '%')
                 ->orWhere('phone', 'like', '%' . $this->key . '%')
-                ->orWhere('gouvernorat', 'like', '%' . $this->key . '%')
+                ->orWhere('country', 'like', '%' . $this->key . '%')
                 ->orWhere('prenom', 'like', '%' . $this->key . '%');
         }
-        $commandes = $commandesQuery->Orderby('id', "Desc")->paginate(80);
+        $commandes = $commandesQuery->Orderby('id', "Desc")
+       ->where('note')
+        ->paginate(80);
         $total = commandes::count();
-        $this->gouvernoratsTunisie = $this->getListGouvernorat();
-        return view('livewire.commandes.list-commande', compact("commandes", "total"));
+    
+        $countries = Country :: all();
+        return view('livewire.commandes.list-commande', compact("commandes", "total", "countries"));
     }
 
 
-    
     public function updateStatus($commandeId, $newStatus)
     {
-       
+        // Mettre à jour le statut de la commande dans la base de données
         $commande = commandes::findOrFail($commandeId);
         if ($commande) {
             $commande->statut = $newStatus;
 
-       
+            //retourner le stock si l'etat de dla command epasser a retourner
             if ($newStatus == "retournée") {
                 foreach ($commande->contenus as $contenus) {
                     $article = produits::find($contenus->id_produit);
@@ -81,60 +87,44 @@ class ListCommande extends Component
                 }
                 $this->sendOrderConfirmationMail($commande);
             }
- if($newStatus == "En cours livraison"){
- 
-    $this->sendOrderConfirmationMail($commande);
-} 
-
             if ($newStatus == "traitement") {
-             
+                foreach ($commande->contenus as $contenus) {
+                    $article = produits::find($contenus->id_produit);
+                    if ($article) {
+                        $article->retourner_stock($contenus->quantite);
+                    }
+                }
                 $this->sendOrderConfirmationMail($commande);
             }
             if ($newStatus == "planification") {
-            
+                foreach ($commande->contenus as $contenus) {
+                    $article = produits::find($contenus->id_produit);
+                    if ($article) {
+                        $article->retourner_stock($contenus->quantite);
+                    }
+                }
                 $this->sendOrderConfirmationMail($commande);
             }
-        
-           
+
+            //enregistrer le chagement de l'etat de la commande
             $commande->save();
         }
     }
 
 
-
-    public function sendOrderConfirmationMail($commande)
-    {
-        try {
-            Mail::to($commande->email)->send(new OrderChangeStatut($commande));
-        } catch (\Exception $e) {
-   
-            \Log::error('Erreur lors de l\'envoi de l\'email de confirmation de commande : ' . $e->getMessage());
-         
-        }
-    }
-    
+    public function sendOrderConfirmationMail($commande){
+        Mail::to ($commande->email)->send(new OrderChangeStatut($commande));
+      }
 
     public function delete($id)
     {
         $commande = commandes::find($id);
-        
-       // $commande->delete();
-         if ( $commande->statut =="attente" || $commande->statut =="créé" || $commande->statut == "traitement" || $commande->statut == "planification" || $commande->statut == "livrée") {
-            
-               foreach ($commande->contenus as $contenus) {
-                    $article = produits::find($contenus->id_produit);
-                    if ($article) {
-                        $article->retourner_stock($contenus->quantite);
-                    }
-               
-            }
-          
-          
-           $commande->delete();
+        if ($commande) {
+            $commande->delete();
 
             //flash message
             session()->flash('success', 'Commande supprimée avec succès');
-        } 
+        }
         return view('livewire.commandes.list-commande');
     }
 
@@ -149,14 +139,7 @@ class ListCommande extends Component
     {
         $commande = commandes::find($id);
         if ($commande) {
-           /*  foreach ($commande->contenus as $contenus) {
-                $article = produits::find($contenus->id_produit);
-                if ($article) {
-                    $article->diminuer_stock($contenus->quantite);
-                }
-            } */
             $commande->etat = "confirmé";
-
             $commande->save();
             $this->sendOrderConfirmationMail($commande);
         }

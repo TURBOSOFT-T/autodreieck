@@ -16,18 +16,23 @@ class commandes extends Model
         'email',
         'adresse',
         'note',
-        'avatar',
-        'coupon',
-
-            "phone",
-           
-            "pays",
-            "gouvernorat",
-            "frais", 
+        'message',
+        'statut',
+        'image',
+        'photo',
+        'tax',
+        "phone",
+        "pays",
+        "gouvernorat",
+        "frais",
         'password',
         'user_id',
+        'country_id',
+        'state_id',
+        'city_id',
 
-        
+
+
     ];
 
 
@@ -37,30 +42,20 @@ class commandes extends Model
         return $this->hasMany(contenu_commande::class, 'id_commande');
     }
 
-    public function montant(){
-        $total = $this->frais;
-        foreach ($this->contenus as $contenu){
-            if($contenu->produit->free_shipping == true){
-            $total += $contenu->prix_unitaire * $contenu->quantite - $this->frais  ;  
-            }
-            else{
-                $total += $contenu->prix_unitaire * $contenu->quantite   ;
-            }
-        }
-        return $total ?? 0;
+
+
+    public function client()
+    {
+        return $this->belongsTo(clients::class, 'phone', 'phone');
     }
 
-    public function client(){
-        return $this->belongsTo(clients::class, 'phone','phone');
-    }
-
-    public function modifiable(){
+    public function modifiable()
+    {
         if ($this->statut === 'retournée' || $this->statut === 'payée' || $this->statut === 'livrée') {
             return false;
         } else {
             return true;
         }
-        
     }
 
     public function user()
@@ -68,4 +63,72 @@ class commandes extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function montant()
+    {
+        $config = config::first();
+        $total = $this->frais;
+
+        foreach ($this->contenus as $contenu) {
+            $total += $contenu->prix_unitaire * $contenu->quantite;
+        }
+     
+
+        return $total ?? 0;
+    }
+
+
+    public function montantHT()
+    {
+        $config = config::first();
+        $totalTTC = 0;
+        $totalHT = 0;
+        foreach ($this->contenus as $contenu) {
+
+            $totalTTC += $contenu->prix_unitaire * $contenu->quantite;
+        }
+
+        $totalHT = $totalTTC / (1 + ($config->tax) / 100);
+        return  $totalHT ?? 0;
+    }
+
+
+
+
+    public function getTVA()
+    {
+        $config = config::first();
+        $total = 0;
+        foreach ($this->contenus as $contenu) {
+            $total += $contenu->prix_unitaire * $contenu->quantite;
+        }
+        $totalHT = $total / (1 + ($config->tax) / 100);
+        $vatAmount =   ($totalHT) * ($config->tax) / 100;
+        return  $vatAmount;
+    }
+
+    public function getPrix()
+    {
+        $config = config::first();
+        $totalTTC = 0;
+        $totalHT = 0;
+        foreach ($this->contenus as $contenu) {
+            $totalTTC += $contenu->prix_unitaire * $contenu->quantite;
+
+            $prixHT = $contenu->prix_unitaire / (1 + ($config->tax) / 100);
+        }
+
+        return $prixHT;
+    }
+
+
+    public function country(){
+        return $this->belongsTo(Country::class,'country_id');
+    }
+
+    public function state(){
+        return $this->belongsTo(State::class,'state_id');
+    }
+    public function city(){
+        return $this->belongsTo(City::class,'city_id');
+    }
 }

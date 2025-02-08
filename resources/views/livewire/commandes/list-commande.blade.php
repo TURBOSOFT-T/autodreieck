@@ -22,9 +22,9 @@
                         <option value="confirmer">Confirmé</option>
                         <option value="non_confirmer">Non confirmé</option>
                     </select>
-                    <select class="form-control" wire:model="gouvernorat">
-                        <option value="">Gouvernorat</option>
-                        @foreach ($gouvernoratsTunisie as $gouvernorat)
+                    <select class="form-control" wire:model="country">
+                        <option value="">Country</option>
+                        @foreach ($countries as $gouvernorat)
                             <option value="{{ $gouvernorat }}">
                                 {{ $gouvernorat }}
                             </option>
@@ -62,11 +62,12 @@
                     <th>ID</th>
                     <th>Nom</th>
                     <th>Téléphone</th>
-                    <th>Gouvernorat</th>
+                    <th>Pays</th>
+                    <th>Région</th>
+                    <th>Ville</th>
                     <th>Montant</th>
                     <th>Statut</th>
                     <th>Mode</th>
-                    <th>Coupon(Valeur)</th>
                     <th>Date</th>
                     <th class="text-end">
                         <span wire:loading>
@@ -79,6 +80,10 @@
 
             <tbody>
                 @forelse ($commandes as $commande)
+                @php
+                 //  dd($commandes);
+                @endphp
+                @if($commande->message === null || $commande->photo === null )
                     <tr>
                         <td>
                             <input type="checkbox" wire:click="toggleCommandeSelection({{ $commande->id }})">
@@ -120,10 +125,28 @@
                             @endif
                         </td>
                         <td>{{ $commande->phone }}</td>
+                        <td>{{ $commande->country->name ?? 'N/A' }}</td>
+                        <td>{{ $commande->state->name ?? 'N/A' }}</td>
                         <td>
-                            {{ $commande->gouvernorat ?? 'N/A' }}
+                            {{ $commande->city->name ?? 'N/A' }}
                         </td>
-                        <td>{{ $commande->montant() }} <x-devise></x-devise> </td>
+                    
+                       
+                        <td>
+                            @if($commande->frais && $commande->tax)
+                            {{ $commande->montant()   }} 
+                           
+                            @elseif ($commande->frais)
+                            {{ $commande->montantHT()  }} 
+                            @elseif ($commande->tax)
+                            {{ $commande->montant() - $commande->frais   }}
+                            @else
+                            {{ $commande->montantHT()}}
+                            
+                            @endif
+                            <x-devise></x-devise> </td>
+                       
+                        
                         <td>
                             @can('order_edit')
                                 @if ($commande->statut === 'payée')
@@ -143,31 +166,7 @@
                                     </b>
                                 @else
                                     @if ($commande->etat == 'confirmé')
-
-
-                                    <select class="form-control-sm"
-                                                onchange="confirmStatusChange(event, {{ $commande->id }})"
-                                                data-current-status="{{ $commande->statut }}">
-                                                <option value="créé"
-                                                    {{ $commande->statut === 'créé' ? 'selected' : '' }}>Créé</option>
-                                                <option value="traitement"
-                                                    {{ $commande->statut === 'traitement' ? 'selected' : '' }}>Traitement
-                                                </option>
-                                                <option value="En cours livraison"
-                                                    {{ $commande->statut === 'En cours livraison' ? 'selected' : '' }}>En
-                                                    cours de Livraison</option>
-                                                <option value="livrée"
-                                                    {{ $commande->statut === 'livrée' ? 'selected' : '' }}>Livrée</option>
-                                                <option value="payée"
-                                                    {{ $commande->statut === 'payée' ? 'selected' : '' }}>Payée</option>
-                                                <option value="planification"
-                                                    {{ $commande->statut === 'planification' ? 'selected' : '' }}>
-                                                    Planification retour</option>
-                                                <option value="retournée"
-                                                    {{ $commande->statut === 'retournée' ? 'selected' : '' }}>Retournée
-                                                </option>
-                                            </select>
-                                        {{-- <select class="form-control-sm"
+                                        <select class="form-control-sm"
                                             wire:change="updateStatus({{ $commande->id }}, $event.target.value)">
                                             <option value="créé" {{ $commande->statut === 'créé' ? 'selected' : '' }}>
                                                 Créé
@@ -175,10 +174,10 @@
                                             <option value="traitement"
                                                 {{ $commande->statut === 'traitement' ? 'selected' : '' }}>
                                                 Traitement</option>
-                                              <option value="livraison"
+                                           {{--  <option value="Livraison"
                                                 {{ $commande->statut === 'livraison' ? 'selected' : '' }}>
-                                             En cours de    Livraison
-                                            </option>  
+                                                Livraison
+                                            </option> --}}
                                             <option value="livrée" {{ $commande->statut === 'livrée' ? 'selected' : '' }}>
                                                 Livré
                                             </option>
@@ -193,7 +192,7 @@
                                                 {{ $commande->statut === 'retournée' ? 'selected' : '' }}>
                                                 Retournée
                                             </option>
-                                        </select> --}}
+                                        </select>
                                     @elseif($commande->etat == 'attente')
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <button type="button" class="btn btn-sm btn-primary"
@@ -220,11 +219,6 @@
                                 {{ $commande->mode }}
                             </span>
                         </td>
-                        <td>@if($commande->coupon)
-                            {{ $commande->coupon }} <x-devise></x-devise> 
-                            @else
-                            ---
-                        @endif</td>
                         <td>{{ $commande->created_at }} </td>
                         <td style="text-align: right;">
                             <div class="btn-group">
@@ -267,6 +261,7 @@
                             @endcan
                         </td>
                     </tr>
+                    @endif
                 @empty
                     <tr>
                         <td colspan="11">
@@ -283,7 +278,7 @@
                             </div>
                         </td>
                     </tr>
-                @endforelse
+                @endforelse {{ $commandes->links() }} 
 
             </tbody>
 
@@ -294,34 +289,6 @@
     {{ $commandes->links('pagination::bootstrap-4') }}
 
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        function confirmStatusChange(event, commandeId) {
-            const newStatus = event.target.value;
-
-            Swal.fire({
-                title: 'Etes vous sûr de changer de status?',
-                text: ` Voulez vous réellement changer le tatus à: ${newStatus}?`,
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, change it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    @this.call('updateStatus', commandeId, newStatus);
-                    Swal.fire(
-                        'Changed!',
-                        'Le status a été changé avec succès.',
-                        'success'
-                    );
-                } else {
-                    // Reset the dropdown to the original value if the user cancels
-                    event.target.value = event.target.getAttribute('data-current-status');
-                }
-            });
-        }
-    </script>
 
 </div>

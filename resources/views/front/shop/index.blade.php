@@ -138,8 +138,8 @@
                                                     <div class="thumbnail">
                                                         <a
                                                             href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
-                                                            <img {{-- src="{{ Storage::url($produit->photo) }}" --}}
-                                                            src="{{ asset('Image/' . $produit->photo) }}"
+                                                            <img src="{{ Storage::url($produit->photo) }}" 
+                                                          
                                                                 alt="{{ $produit->nom }}"
                                                                 style="max-width: 300px; max-height: 300px;">
 

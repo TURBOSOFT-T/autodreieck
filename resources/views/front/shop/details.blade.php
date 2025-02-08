@@ -47,7 +47,7 @@
                                     <div class="shop-details-tab-img product-img--main" id="zoomContainers"
                                         data-scale="1.4" style="overflow: hidden; position: relative;">
 
-                                        <img id="mainImage" src="{{ asset('Image/' . $produit->photo) }}" {{-- src="{{ Storage::url($produit->photo) }}" --}} height="600"
+                                        <img id="mainImage"  src="{{ Storage::url($produit->photo) }}"  height="600"
                                             width="600" alt="Product image"
                                             style="transition: transform 0.3s ease;" />
                                     </div>
@@ -317,7 +317,7 @@
                                     <div class="thumbnail">
                                         <a
                                             href="{{ route('details-produits', ['id' => $produit->id, 'slug' => Str::slug(Str::limit($produit->nom, 10))]) }}">
-                                            <img src="{{ asset('Image/' . $produit->photo) }}" {{-- src="{{ Storage::url($produit->photo) }}" --}} alt="Product Images">
+                                            <img   src="{{ Storage::url($produit->photo) }}" alt="Product Images">
 
                                             <style>
                                                 .top-left {

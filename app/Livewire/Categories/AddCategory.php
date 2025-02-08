@@ -68,53 +68,9 @@ class AddCategory extends Component
         $category = new Category();
         $category->nom = $this->nom;
         $category->description = $this->description;
+        $category->photo = $this->photo->store('categories', 'public');
         
-        if ($this->photo) {
-            $filename = time() . '.' . $this->photo->getClientOriginalExtension();
-            
-            // Chemin source temporaire (Livewire)
-            $sourcePath = storage_path('app/livewire-tmp/' . $this->photo->getFilename());
-            
-            // Chemin de destination dans public/Image/
-            $destinationPath = public_path('Image/' . $filename);
-            
-            // Tentative de déplacement avec rename()
-            if (file_exists($sourcePath)) {
-                if (rename($sourcePath, $destinationPath)) {
-                    // Si le déplacement est réussi
-                    $category->photo = $filename;
-                } else {
-                    session()->flash('error', 'Impossible de déplacer le fichier.');
-                    // Si échec, utiliser storage
-                    $path = $this->photo->storeAs('Image', $filename, 'public');
-                    $category->photo = $filename;
-                }
-            } else {
-                // Si le fichier source n'existe pas, utiliser storage
-                $path = $this->photo->storeAs('Image', $filename, 'public');
-                $category->photo = $filename;
-            }
-        }
-        
-      //  $category->save();
-        
-      /*     if ($this->photo) {
-            $filename = time() . '.' . $this->photo->getClientOriginalExtension();
-            
-           
-            $path = $this->photo->storeAs('Image', $filename, 'public'); 
-            
-           
-            $sourcePath = storage_path("app/public/$path"); 
-            $destinationPath = public_path("Image/$filename");
-        
-            if (file_exists($sourcePath)) {
-                rename($sourcePath, $destinationPath);
-            }
-        
-            $category->photo = $filename;
-        }
-         */
+    
         
   
         $category->save();
