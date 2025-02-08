@@ -270,8 +270,8 @@ class AjouterCommande extends Component
             'prenom' => 'nullable|string|max:100',
             'adresse' => 'required|string|max:150',
             'phone' => 'required|string|max:100',
-            'pays' => 'required|string|max:100',
-            'gouvernorat' => 'required|string|max:12',
+            'pays' => 'nullable|string|max:100',
+            'gouvernorat' => 'nullable|string|max:12',
             'frais' => 'nullable',
         ]);
 
