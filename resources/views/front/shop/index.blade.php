@@ -47,11 +47,11 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-4">
-                                {{-- <div class="inner">
+                                <div class="inner">
                                     <div class="bradcrumb-thumb">
                                         <img src="{{ Storage::url($config->image_shop) }}" alt="Image">
                                     </div>
-                                </div> --}}
+                                </div> 
                             </div>
                         </div>
                     </div>
