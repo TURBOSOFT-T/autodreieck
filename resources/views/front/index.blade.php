@@ -115,45 +115,7 @@
 
         </style>
 
-        {{-- <div id="carouselExample" class="carousel slide  carousel-inner" data-ride="carousel" data-interval="3000">
-            <div class="carousel-inner">
-                @foreach ($banners as $key => $banner)
-                <div class="carousel-item {{ $key === 0 ? 'active' : '' }}"
-        style="background-image: url('{{ Storage::url($banner->image) }}'); background-size: cover; background-position: center; height: 100vh;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-sm-8">
-                    <div class="main-slider-content">
-                        <span class="subtitle"><i class="fas fa-fire"></i>
-                            {{ $banner->titre ?? '' }}</span>
-                        <p style="font-size: 1.5rem;   color: #ffffff;  margin-top: 10px; ">
-                            {{ $banner->sous_titre ?? '' }}</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-        <div class="shop-btn d-flex justify-content-center">
-            <a href="{{ route('shop') }}" class="axil-btn btn-bg-secondary right-icon">
-                Voir boutique <i class="fal fa-long-arrow-right"></i>
-            </a>
-        </div>
-        </div>
-        @endforeach
-        </div>
-        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-        </div>
-        --}}
+       
 
 
 
@@ -174,7 +136,7 @@
                     <div class="slick-single-layout">
                         <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
                             <a href="/category/{{ $category->id }}" class="{{ isset($current_category) && $current_category->id === $category->id ? 'selected' : '' }}">
-                                <img   src="{{ Storage::url($category->photo) }}"   width="200"   border-radius="8px" height="200" object-fit= "cover"; class="rounded shadow" alt="product categorie">
+                                <img   src="{{ Storage::url($category->photo) }}"    class="rounded shadow fixed-image" alt="product categorie">
                               
                                 <h6 class="cat-title">
                                     {{ \App\Helpers\TranslationHelper::TranslateText($category->nom ?? '') }}
