@@ -98,8 +98,8 @@
                         {{ \App\Helpers\TranslationHelper::TranslateText($config->titre_apropos2) }}
                     </h4>
                     <p style="text-align: justify">{!! $config->des_apropos2 !!}</p>
-                    <a href="{{ route('shop') }}"  class="axil-btn btn-bg-primary2"> {{ \App\Helpers\TranslationHelper::TranslateText('Voir boutique') }}</a>
-                </div>
+                  {{--   <a href="{{ route('shop') }}"  class="axil-btn btn-bg-primary2"> {{ \App\Helpers\TranslationHelper::TranslateText('Voir boutique') }}</a>
+         --}}        </div>
             </div>
         </div>
         <div class="row align-items-center mb--80 mb_sm--60">
