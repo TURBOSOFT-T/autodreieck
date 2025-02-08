@@ -525,8 +525,14 @@
                                             <div class="product-price-variant">
                                                 <span class="price-text"> {!! \App\Helpers\TranslationHelper::TranslateText("Coût") !!}:</span>
                                                 <span class="price current-price"> <b class="text-success" style="color: #4169E1">
-                                                        {{ $produit->getPrice() }} <x-devise></x-devise> 
-                                                    </b></span>
+                                                        {{ $produit->getPrice() }} 
+                                                    </b></span> 
+
+                                                   <span class="price current-price">   <b class="text-success fs-7" style="color: #4169E1">
+                                                        <x-devise></x-devise>
+                                                    </b>
+                                                    </span>
+                                                    
                                             </div>
                                         </div>
                                     </div>
