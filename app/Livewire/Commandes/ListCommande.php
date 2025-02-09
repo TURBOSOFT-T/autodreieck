@@ -85,7 +85,7 @@ class ListCommande extends Component
                         $article->retourner_stock($contenus->quantite);
                     }
                 }
-                $this->sendOrderConfirmationMail($commande);
+               // $this->sendOrderConfirmationMail($commande);
             }
             if ($newStatus == "traitement") {
                 foreach ($commande->contenus as $contenus) {
@@ -94,7 +94,7 @@ class ListCommande extends Component
                         $article->retourner_stock($contenus->quantite);
                     }
                 }
-                $this->sendOrderConfirmationMail($commande);
+               // $this->sendOrderConfirmationMail($commande);
             }
             if ($newStatus == "planification") {
                 foreach ($commande->contenus as $contenus) {
@@ -103,7 +103,7 @@ class ListCommande extends Component
                         $article->retourner_stock($contenus->quantite);
                     }
                 }
-                $this->sendOrderConfirmationMail($commande);
+               // $this->sendOrderConfirmationMail($commande);
             }
 
             //enregistrer le chagement de l'etat de la commande
@@ -141,7 +141,7 @@ class ListCommande extends Component
         if ($commande) {
             $commande->etat = "confirmé";
             $commande->save();
-            $this->sendOrderConfirmationMail($commande);
+          //  $this->sendOrderConfirmationMail($commande);
         }
     }
 
@@ -159,7 +159,7 @@ class ListCommande extends Component
             $commande->etat = "annulé";
 
             $commande->save();
-            $this->sendOrderConfirmationMail($commande);
+          //  $this->sendOrderConfirmationMail($commande);
             
         }
     }

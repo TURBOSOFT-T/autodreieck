@@ -146,25 +146,7 @@ class Checkout extends Component
         $connecte = Auth::user();
         $configs = config::firstOrFail();
         $total = 0;
-        if (!$connecte) {
-            $existingUser = User::where('email', $request->input('email'))->first();
-            if (!$existingUser) {
-                $this->validate();
-            $user = new User();
-            $user->nom = $this->nom;
-            $user->prenom = $this->prenom;
-            $user->email = $this->email;
-            $user->password = Hash::make($this->phone);
-            $user->phone = $this->phone; 
-            } else {
-                
-                $user = $existingUser;
-            }
-          } else {
-            
-            $user = $connecte;
-          }
-
+       
 
         if ($connecte) {
             $order = new commandes();
@@ -186,7 +168,7 @@ class Checkout extends Component
             $this->validate();
             $order = new commandes();
             $order->nom = $this->nom;
-       //     $order->user_id = $user->id;
+          //  $order->user_id = $user->id;
        $order->prenom = $this->prenom;
        $order->email = $this->email;
       $order->adresse = $this->adresse;
@@ -201,7 +183,7 @@ class Checkout extends Component
 //dd($order);
 
         $order->save();
-        $existingUsersWithEmail = User::where('email', $request['email'])->exists();
+        $existingUsersWithEmail = User::where('email', $this->email)->exists();
 
         if (!$existingUsersWithEmail) {
             $this->validate();
@@ -211,7 +193,8 @@ class Checkout extends Component
             $user->email = $this->email;
             $user->password = Hash::make($this->phone);
             $user->phone = $this->phone;
-            //Mail::to($user->email)->send(new FirstOrder($user));
+           $user->save();
+        //    Mail::to($user->email)->send(new FirstOrder($user));
 
 
         }
@@ -237,7 +220,7 @@ class Checkout extends Component
         }
 
         //envoyer les emails
-          $this->sendOrderConfirmationMail($order);
+        //  $this->sendOrderConfirmationMail($order);
 
         //effacer le panier
        //  session()->forget('cart');
