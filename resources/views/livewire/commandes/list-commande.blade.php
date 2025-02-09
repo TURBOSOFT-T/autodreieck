@@ -62,12 +62,13 @@
                     <th>ID</th>
                     <th>Nom</th>
                     <th>Téléphone</th>
+                    <th>Email</th>
                     <th>Pays</th>
                     <th>Région</th>
                     <th>Ville</th>
                     <th>Montant</th>
                     <th>Statut</th>
-                    <th>Mode</th>
+                   {{--  <th>Mode</th> --}}
                     <th>Date</th>
                     <th class="text-end">
                         <span wire:loading>
@@ -125,6 +126,7 @@
                             @endif
                         </td>
                         <td>{{ $commande->phone }}</td>
+                        <td>{{ $commande->email }}</td>
                         <td>{{ $commande->country->name ?? 'N/A' }}</td>
                         <td>{{ $commande->state->name ?? 'N/A' }}</td>
                         <td>
@@ -214,11 +216,11 @@
                             @endcan
 
                         </td>
-                        <td>
+                     {{--    <td>
                             <span class="text-capitalize">
                                 {{ $commande->mode }}
                             </span>
-                        </td>
+                        </td> --}}
                         <td>{{ $commande->created_at }} </td>
                         <td style="text-align: right;">
                             <div class="btn-group">

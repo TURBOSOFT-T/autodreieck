@@ -24,7 +24,7 @@
                                 {{ $contenu->produit->nom }}
                             </td>
                             <td>
-                                {{ $contenu->prix_unitaire }} DT
+                                {{ $contenu->prix_unitaire }} <x-devise></x-devise>
                             </td>
                             <td>
                                 @if ($commande->statut != 'retournée' && $commande->statut != 'payée')
@@ -42,7 +42,7 @@
 
                             </td>
                             <td>
-                                {{ $contenu->quantite * $contenu->prix_unitaire }} DT
+                                {{ $contenu->quantite * $contenu->prix_unitaire }} <x-devise></x-devise>
                             </td>
                             <td>
                                 <button class="btn btn-sm btn-danger" type="button"
@@ -58,9 +58,9 @@
                                 src="https://img.icons8.com/ios/30/40C057/delivery--v1.png" alt="delivery--v1" />
                         </td>
                         <td> <b>Frais de livraison</b> </td>
-                        <td> {{ $commande->frais ?? 0}} DT </td>
+                        <td> {{ $commande->frais ?? 0}} <x-devise></x-devise> </td>
                         <td> 1 </td>
-                        <td> {{ $commande->frais ?? 0}} DT </td>
+                        <td> {{ $commande->frais ?? 0}} <x-devise></x-devise> </td>
                         <td></td>
                     </tr>
                 </tbody>

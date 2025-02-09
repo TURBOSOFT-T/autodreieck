@@ -95,13 +95,13 @@
                                                     </b>
                                                 </td>
                                                 <td>
-                                                    {{ $contenu->prix_unitaire }} DT
+                                                    {{ $contenu->prix_unitaire }} <x-devise></x-devise>
                                                 </td>
                                                 <td>
                                                     {{ $contenu->quantite }}
                                                 </td>
                                                 <td>
-                                                    {{ $contenu->quantite * $contenu->prix_unitaire }} DT
+                                                    {{ $contenu->quantite * $contenu->prix_unitaire }} <x-devise></x-devise>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -116,12 +116,12 @@
                                             <b>Résumé de la commande </b>
                                         </h6>
                                         Montant total : <br>
-                                        <b>{{ $commande->montant() }} DT</b>
+                                        <b>{{ $commande->montant() }} <x-devise></x-devise></b>
                                         @if ($commande->frais)
-                                            ( Frais de livraison inclu ( {{ $commande->frais ?? 0 }} DT) ) .
+                                            ( Frais de livraison inclu ( {{ $commande->frais ?? 0 }} €) ) .
                                         @endif
                                         @if ($commande->coupon)
-                                        ( Le code promo est appliqué d'une valeur de  ( {{ $commande->coupon ?? 0 }} DT) ) .
+                                        ( Le code promo est appliqué d'une valeur de  ( {{ $commande->coupon ?? 0 }} €) ) .
                                         @endif
                                         <br>
                                         <i class="ri-calendar-check-line"></i>Date : {{ $commande->created_at }}
@@ -141,6 +141,7 @@
                                 <i class="ri-user-line"></i> Nom : {{ $commande->nom }} <br>
                                 <i class="ri-phone-line"></i> Phone : {{ $commande->phone }} <br>
                                 <i class="ri-map-pin-line"></i> Adresse : {{ $commande->adresse }} <br>
+                                <i class="ri-mail-line"></i> Email : {{ $commande->email }}
                                 <hr>
                                 <h6 class="card-title mt-3">
                                     <b>Notes</b>

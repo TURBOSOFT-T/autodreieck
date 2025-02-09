@@ -220,7 +220,7 @@ class Checkout extends Component
         }
 
         //envoyer les emails
-        //  $this->sendOrderConfirmationMail($order);
+         $this->sendOrderConfirmationMail($order);
 
         //effacer le panier
        //  session()->forget('cart');
