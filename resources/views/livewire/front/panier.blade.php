@@ -98,7 +98,7 @@ $configs = DB::table('configs')->first();
                     {{ session('error') }}
                 </div>
                 @endif
-                <div class="cart-update-btn-area">
+               {{--  <div class="cart-update-btn-area">
                   
                     <form action="{{ route('apply.coupon') }}" method="POST">
                         @csrf
@@ -108,47 +108,13 @@ $configs = DB::table('configs')->first();
                         <input type="text" name="code" placeholder="Entrez le code du coupon">
                         <div class="product-cupon-btn">
                            <button type="submit" class="axil-btn1  btn-bg-primary1 btn-outline1"> {{ \App\Helpers\TranslationHelper::TranslateText('Appliquer') }}</button> 
-                           <style>
-                            .axil-btn1 {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.btn-bg-primary1 {
-    background-color: #5EA13C
-    ; /* Example primary color */
-    color: #fff;
-    border: none;
-}
-
-.btn-outline1 {
-    background-color: transparent;
-    color: #5EA13C
-    ;
-    border: 2px solid #5EA13C
-    ;
-}
-
-.axil-btn1.btn-bg-primary1.btn-outline1:hover {
-    background-color: #5EA13C
-    ; /* Darker shade on hover */
-    color: #fff;
-}
-
-                           </style>
-                          {{--   <a type="submit" class="axil-btn btn-bg-primary2 checkout-btn">Commander</a> --}}
-
+                           
                      
                         </div>
                     </div>
                     </form>
-                    <div class="update-btn">
-                      {{--   <a href="#" class="axil-btn btn-outline">Update Cart</a> --}}
-                    </div>
-                </div>
+                 
+                </div> --}}
                 <div class="row">
                     <div class="col-xl-5 col-lg-7 offset-xl-7 offset-lg-5">
                         <div class="axil-order-summery mt--80">
@@ -194,25 +160,7 @@ $configs = DB::table('configs')->first();
     </div>
     <!-- End Cart Area  -->
 
-    <style>
-        .btn-bg-primary2 {
-            background-color: #5EA13C;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .btn-bg-secondary2 {
-        background-color: #EFB121; /* Couleur de fond, bleu dans cet exemple */
-        color: #ffffff; /* Couleur du texte, blanc dans cet exemple */
-        border: none;
-        padding: 10px 20px; /* Optionnel, ajuste la taille */
-        border-radius: 5px; /* Optionnel, arrondit les coins */
-        text-decoration: none; /* Supprime le soulignement */
-    }
-    </style>
+    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 

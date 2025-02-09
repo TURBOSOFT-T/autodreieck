@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        {{ \App\Helpers\TranslationHelper::TranslateText('Bienvenue chez Ben Mahmoud Market') }}
+        {{ \App\Helpers\TranslationHelper::TranslateText('Bienvenue chez Autodreieck') }}
     </title>
     <style>
         body {
@@ -62,7 +62,7 @@
         </div> --}}
         <div class="content">
             <h1>
-                {{ \App\Helpers\TranslationHelper::TranslateText('Bienvenue chez Ben Madmoud Market !') }}
+                {{ \App\Helpers\TranslationHelper::TranslateText('Bienvenue chez Autodreieck !') }}
             </h1>
             <p> {{ \App\Helpers\TranslationHelper::TranslateText('Bonjour') }}{{ $user->nom }} ,</p>
             <p> {{ \App\Helpers\TranslationHelper::TranslateText('Votre email est') }} : {{ $user->email }} ,</p>
@@ -82,7 +82,7 @@
         </div>
         <div class="footer">
             <p>&copy; {{ date('Y') }} 
-                {{ \App\Helpers\TranslationHelper::TranslateText('Ben Mahmoud Market. Tous droits réservés') }}.</p>
+                {{ \App\Helpers\TranslationHelper::TranslateText('Autodreieck. Tous droits réservés') }}.</p>
         </div>
     </div>
 </body>

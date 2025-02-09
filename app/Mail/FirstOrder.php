@@ -29,7 +29,7 @@ class FirstOrder extends Mailable
     {
         return $this->view('Mail.inscription')
             ->subject( 'NOUVELLE INSCRIPTION')
-            ->from("no_reply@benmahmoud-market.shop", config('app.name'));
+            ->from("no-reply@turbosoft-techno.com", config('app.name'));
     }
 
 }

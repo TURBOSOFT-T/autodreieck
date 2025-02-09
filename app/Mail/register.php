@@ -25,8 +25,8 @@ class register extends Mailable
     {
         return $this->to($this->user->email)
             ->view('Mail.register')
-            ->subject('Bienvenue sur Ben Madmoud Market')
-            ->from("no_reply@benmahmoud-market.shop", "Ben Madmoud Market")
+            ->subject('Bienvenue sur Autodreieck')
+            ->from("no-reply@turbosoft-techno.com", "Autodreieck")
             ->with([
                 'user' => $this->user,
             ]);

@@ -146,7 +146,24 @@ class Checkout extends Component
         $connecte = Auth::user();
         $configs = config::firstOrFail();
         $total = 0;
-
+        if (!$connecte) {
+            $existingUser = User::where('email', $request->input('email'))->first();
+            if (!$existingUser) {
+                $this->validate();
+            $user = new User();
+            $user->nom = $this->nom;
+            $user->prenom = $this->prenom;
+            $user->email = $this->email;
+            $user->password = Hash::make($this->phone);
+            $user->phone = $this->phone; 
+            } else {
+                
+                $user = $existingUser;
+            }
+          } else {
+            
+            $user = $connecte;
+          }
 
 
         if ($connecte) {
@@ -169,16 +186,19 @@ class Checkout extends Component
             $this->validate();
             $order = new commandes();
             $order->nom = $this->nom;
-            $order->prenom = $request->prenom;
-            $order->email = $request->email;
-            $order->adresse = $request->adresse;
-            $order->phone = $request->phone;
-            $order->note = $request->note;
-            $order->country_id = $this->country_id;
-            $order->state_id = $this->state_id;
-            $order->city_id = $this->city_id;
-        }
+       //     $order->user_id = $user->id;
+       $order->prenom = $this->prenom;
+       $order->email = $this->email;
+      $order->adresse = $this->adresse;
+       $order->phone = $this->phone;
+       $order->note = $this->note;
+       $order->country_id = $this->country_id;
+       $order->state_id = $this->state_id;
+      $order->city_id = $this->city_id;
 
+
+        }
+//dd($order);
 
         $order->save();
         $existingUsersWithEmail = User::where('email', $request['email'])->exists();
@@ -217,10 +237,10 @@ class Checkout extends Component
         }
 
         //envoyer les emails
-        //  $this->sendOrderConfirmationMail($order);
+          $this->sendOrderConfirmationMail($order);
 
         //effacer le panier
-         session()->forget('cart');
+       //  session()->forget('cart');
         session()->forget('coupon');
 
         //generate notification

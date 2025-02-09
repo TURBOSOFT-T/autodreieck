@@ -206,3 +206,35 @@ border-radius: 8px;
     font-weight: bold;
     color: #EFB121; /* Distinct color for active item */
 }
+
+.axil-btn1 {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-bg-primary1 {
+    background-color: #5EA13C
+    ; /* Example primary color */
+    color: #fff;
+    border: none;
+}
+
+.btn-outline1 {
+    background-color: transparent;
+    color: #5EA13C
+    ;
+    border: 2px solid #5EA13C
+    ;
+}
+
+.axil-btn1.btn-bg-primary1.btn-outline1:hover {
+    background-color: #5EA13C
+    ; /* Darker shade on hover */
+    color: #fff;
+}
+
+
+
