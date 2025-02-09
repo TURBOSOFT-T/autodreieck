@@ -245,6 +245,13 @@ class Checkout extends Component
     public function sendOrderConfirmationMail($order)
     {
 
+      //  Mail::to($order->email)->send(new OrderMail($order));
+      try {
         Mail::to($order->email)->send(new OrderMail($order));
+        session()->flash('success', 'Email envoyé avec succès !');
+    } catch (\Exception $e) {
+        \Log::error('Erreur d\'envoi d\'email : ' . $e->getMessage());
+        session()->flash('error', 'Échec de l\'envoi de l\'email. Veuillez réessayer.');
+    }
     }
 }
