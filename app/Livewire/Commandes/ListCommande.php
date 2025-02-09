@@ -61,7 +61,7 @@ class ListCommande extends Component
                 ->orWhere('prenom', 'like', '%' . $this->key . '%');
         }
         $commandes = $commandesQuery->Orderby('id', "Desc")
-       ->where('note')
+      
         ->paginate(80);
         $total = commandes::count();
     

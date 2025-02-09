@@ -83,7 +83,7 @@
                 @php
                  //  dd($commandes);
                 @endphp
-                @if($commande->message === null || $commande->photo === null )
+              
                     <tr>
                         <td>
                             <input type="checkbox" wire:click="toggleCommandeSelection({{ $commande->id }})">
@@ -261,7 +261,7 @@
                             @endcan
                         </td>
                     </tr>
-                    @endif
+                
                 @empty
                     <tr>
                         <td colspan="11">
